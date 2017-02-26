@@ -1,0 +1,28 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+        div.navbar-header
+          a(class="navbar-brand" href="/#/detail") <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{username}}
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(ng-if="username === '~Admin'", href="/#/admin") <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> 管理
+            li
+              a(href="/#/addblog") <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 写博客
+            li
+              a(href="/#/signout") <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
+          form(class="navbar-form navbar-right", role="search")
+            div.form-group
+              input(type="text", class="form-control", placeholder="搜索博客", ng-model='searchBlog')
+div.container
+  div(ng-if='blogs.length == 0', class='row')
+    h1.col-md-6.col-md-offset-3 还没有人发过博客 +_+
+  table(ng-table="myTable" class="table table-condensed table-bordered table-striped")
+    tr(ng-repeat='b in $data|filter:searchBlog')
+      td
+        h3 <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> {{b.blog.title}}
+        h5 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{b.username}}
+        p {{b.blog.text}}
+        a(ng-if='!b.hide', class='btn btn-default', ng-href='/#/more/{{b._id}}') <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 阅读
+        a(ng-if='username === b.username && !b.hide' class='btn btn-default', ng-href='/#/changeblog/{{b._id}}') <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
+        button(ng-if='username === b.username && !b.hide' class='btn btn-default', ng-click='deleteblog(b._id, $index)') <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 删除

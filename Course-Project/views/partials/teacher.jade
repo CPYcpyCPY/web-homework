@@ -1,0 +1,135 @@
+nav.navbar.navbar-inverse
+  div.container
+    div.navbar-header
+      p.navbar-brand My Achievements
+    div.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a 教师
+          li
+            a(href="/#/signout") 退出
+div.container
+  div.row
+    button(class="btn btn-default col-md-3", ng-click="show(0)") 助教信息
+    button(class="btn btn-default col-md-3", ng-click="show(1)") 学生信息
+    button(class="btn btn-default col-md-3", ng-click="show(2)") 作业信息
+    button(class="btn btn-default col-md-3", ng-click="show(3)") 发布作业
+  div.row
+    div(ng-if="showPage[0]", class="col-md-12")
+      h1(ng-if="currentTAs.length === 0") 还未添加助教&nbsp;
+        small
+          a(ng-click="autoAddTA()", class="btn btn-default") 自动添加助教
+      table.table.table-hover
+        thead
+          tr
+            td 姓名
+            td 学号
+            td 负责班级
+            td 负责小组
+        tbody
+          tr(ng-repeat="TA in currentTAs")
+            td {{TA.name}}
+            td {{TA.username}}
+            td {{TA.class}}
+            td {{TA.groups}}
+    div(ng-if="showPage[1]", class="col-md-12")
+      h1(ng-if="currentStudents.length === 0") 还未添加学生&nbsp;
+        small
+          a(ng-click="autoAddStudents()", class="btn btn-default") 自动添加学生
+      table.table.table-hover
+        thead
+          tr
+            td 姓名
+            td 学号
+            td 班级
+            td 小组
+        tbody
+          tr(ng-repeat="student in currentStudents")
+            td {{student.name}}
+            td {{student.username}}
+            td {{student.class}}
+            td {{student.groups}}
+    div(ng-if="showPage[2]", class="col-md-12")
+      h1(ng-if="currentHomeworks.length == 0") 还未发布作业
+      table.table.table-hover
+        thead
+          tr
+            td 作业名称
+            td 开始时间
+            td 结束时间
+            td --链接
+            td --状态
+            td --操作1
+            td --操作2
+        tbody
+          tr(ng-repeat="hw in currentHomeworks")
+            td {{hw.name}}
+            td {{hw.beginTime}}
+            td {{hw.endTime}}
+            td
+              a(href="http://{{hw.link}}") 作业链接
+            td
+              button(ng-if="hw.status == '0'", class="btn btn-primary", ng-click="changeHomeworkStatus(hw._id)") 未开始
+              button(ng-if="hw.status == '1'", class="btn btn-info", ng-click="changeHomeworkStatus(hw._id)") 正在进行
+              button(ng-if="hw.status == '2'", class="btn btn-success", ng-click="changeHomeworkStatus(hw._id)") 已结束
+            td
+              button(class="btn btn-primary", ng-click="finishDetail(hw._id); show(4)") 完成情况
+            td
+              button(class="btn btn-primary", ng-click="ranking(hw._id)") 进行排名
+    div(ng-if="showPage[3]", class="col-md-12")
+      form.form
+        label 作业名称:
+        input(type="text", class="form-control", ng-model="homework.name")
+        label 开始时间(yyyy-mm-dd):
+        input(type="text", class="form-control", ng-model="homework.beginTime")
+        label 结束时间(yyyy-mm-dd):
+        input(type="text", class="form-control", ng-model="homework.endTime")
+        label 作业链接:
+        input(type="text", class="form-control", ng-model="homework.link")
+        button(class="btn btn-default", ng-click="publishHomework()") 添加
+    div(ng-if="showPage[4]", class="col-md-12")
+      h1(ng-if="allSubmission.length == 0") 学生还未提交作业!
+      table.table.table-hover
+        thead
+          tr
+            td 学生姓名
+            td 学号
+            td 学生留言
+            td -链接1
+            td -链接2
+            td TA给分
+            td 全班排名
+            td -操作1
+            td -操作2
+        tbody
+          tr(ng-repeat="subm in allSubmission")
+            td {{subm.userInfo.name}}
+            td {{subm.userInfo.username}}
+            td {{subm.message}}
+            td
+              a(ng-if="subm.github.length > 0", href="http://{{subm.github}}", target="_blank") github链接
+            td
+              a(href="/uploads/{{subm.src[0].filename}}", target="_blank") 源文件
+            td {{subm.remark.score}}
+            td {{subm.remark.rank || "#"}}
+            td
+              button(class="btn btn-default", ng-click="remarkInfo.submissionId = subm._id", data-toggle="modal", data-target="#myModal") 修改评分
+            td
+              button(ng-if="!subm.isConfirm", class="btn btn-default", ng-click="confirmScore(subm._id)") 确认分数
+              p(ng-if="subm.isConfirm", class="btn btn-success") 已确认
+//-Model
+div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+  div(class="modal-dialog", role="document")
+    div(class="modal-content")
+      div(class="modal-header")
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+        h4(class="modal-title" id="gridSystemModalLabel") 评分
+      div(class="modal-body")
+        div(class="container-fluid")
+          form(class="form")
+            label 分数:
+            input(type="text", ng-model="remarkInfo.score", class="form-control")
+            label 作业评价:
+            textarea(ng-model="remarkInfo.message", rows="3", class="form-control")
+            button(class="btn btn-default", ng-click="remark()") 提交

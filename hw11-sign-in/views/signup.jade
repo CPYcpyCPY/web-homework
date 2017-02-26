@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Sign Up
+    meta(charset="utf-8")
+    meta(name="author", content="hongchh_sysu@qq.com")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/signup.css")
+    script(type="text/javascript", src="./javascripts/checker.js")
+    script(type="text/javascript", src="./javascripts/signup.js")
+  body
+    div#website-info
+      h1 Student information system
+      p If you already have an account, just <a href="/signin">Sign In.</a><br/>
+        |For signing up, you should commit the following message:<br/>
+        <span>* User name</span> (6 to 18 letters, numbers or underscore, begin with an letter)<br/>
+        <span>* Password</span> (6 to 12 letters, numbers or underscore)<br/>
+        <span>* Student ID</span> (8 numbers, can not start with 0)<br/>
+        <span>* Phone number</span> (11 numbers can not begin with 0)<br/>
+        <span>* Email</span> (All the valid email)
+    div#sign-up
+      form(action="/regist", method="post")
+        input(type="text", name="username", placeholder="User name", value=user.username)
+        div.error=error.nameError
+        input(type="password", name="password", placeholder="Password", value=user.password)
+        div.error=error.passwordError
+        input(type="password", name="password2", placeholder="Password again", value=user.password)
+        div.error=error.passwordError2
+        input(type="text", name="id", placeholder="Student ID", value=user.id)
+        div.error=error.idError
+        input(type="text", name="phone", placeholder="Your phone number", value=user.phone)
+        div.error=error.phoneError
+        input(type="text", name="email", placeholder="Your email", value=user.email)
+        div.error=error.emailError
+        input(type="button", value="reset")
+        input(type="submit", value="sign up")

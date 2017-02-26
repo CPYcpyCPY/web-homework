@@ -1,0 +1,64 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+      div.navbar-header
+        p.navbar-brand My Achievements
+      div.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a {{user.username}}
+          li
+            a 第{{user.groups}}组
+          li
+            a {{user.name}}
+          li
+            a(href="/#/signout") 退出
+div.container
+  ul(class="nav nav-tabs", role="tablist")
+    li(role="presentation", class="active", id="othersR")
+      a(href="#othersReview", aria-controls="othersReview", role="tab", data-toggle="tab") 查看评审
+    li(role="presentation", id="myR")
+      a(href="#myReviews", aria-controls="myReviews", role="tab", data-toggle="tab") 评审他人
+    li(role="presentation")
+      a(href="/#/student") 返回
+  div.tab-content
+    div(role="tabpanel" class="tab-pane active" id="othersReview")
+      div.review-header
+        div.row
+          div.col-md-12.text-center
+        div.row
+          div(class="col-md-4", ng-if="myFinalScore.score")
+            div.panel.panel-primary
+              div.panel-heading {{myFinalScore.score}}
+              div.panel-body {{myFinalScore.message}}
+          div(class="col-md-4", ng-repeat="r in othersRemarks")
+            div.panel.panel-info
+              div.panel-heading {{r.remarkInfo.score}}
+              div.panel-body {{r.remarkInfo.message}}
+    div(role="tabpanel" class="tab-pane" id="myReviews")
+      div.row
+        div(class="col-md-4", ng-repeat="hw in homeworksIShouldRemark")
+          div.panel.panel-primary
+            div.panel-heading {{hw.userInfo.username+'---'+hw.userInfo.name}}
+            div.panel-body
+              img(ng-src="/uploads/{{hw.img[0].filename}}")
+            div.panel-footer
+              a(href="/uploads/{{hw.src[0].filename}}", target="_blank") 源文件 
+              a(href="http://{{hw.github}}", target="_blank")  github
+              a(class="pull-right", ng-click="showForm(hw._id, hw.user)", data-toggle="modal", data-target="#myModal") 评分
+//-Model
+div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+  div(class="modal-dialog", role="document")
+    div(class="modal-content")
+      div(class="modal-header")
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+        h4(class="modal-title" id="gridSystemModalLabel") 评分
+      div(class="modal-body")
+        div(class="container-fluid")
+          form(class="form")
+            label 分数:
+            input(type="text", ng-model="myRemarkToOthers.score", class="form-control")
+            label 作业评价:
+            textarea(ng-model="myRemarkToOthers.message", rows="3", class="form-control")
+            button(class="btn btn-default", ng-click="submitMyRemark()") 提交

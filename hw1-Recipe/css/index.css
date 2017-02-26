@@ -1,0 +1,162 @@
+body {
+    background-image: url(http://courses.cs.washington.edu/courses/cse190m/09sp/homework/1/silverware.jpg);
+    background-attachment: fixed;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+    font-family: Georgia, Garamond, sans-serif;
+}
+
+.heading h1 {
+    color: #A4A400;
+    font-size: 45px;
+    text-align: center;
+    margin: 5%;
+}
+
+.heading img {
+    width: 10%;
+    height: 5%;
+    top: 2%;
+    left: 10%;
+    position: absolute;
+}
+
+.pie-image img {
+    border-radius: 50%;
+    border: 3px solid #A4A400;
+    margin: 0;
+    width: 20%;
+    top: 30%;
+    position: absolute;
+    -webkit-transform: scale(1.0);
+    -moz-transform: scale(1.0);
+    -o-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.pie-image img:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#pie-image1 {
+    left: 10%;
+}
+
+#pie-image2 {
+    left: 40%;
+}
+
+#pie-image3 {
+    left: 70%;
+}
+
+.link {
+    text-align: center;
+    width: 20%;
+    top: 75%;
+    left: 50%;
+    margin-left: -10%;
+    position: absolute;
+}
+
+a {
+    text-decoration: none;
+    color: #A4A400;
+    font-size: 25px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*页面开始动画*/
+#pie-image1 {
+    -webkit-animation: moveRight 2s ease-out;
+    -moz-animation: moveRight 2s ease-out;
+    -o-animation: moveRight 2s ease-out;
+    -ms-animation: moveRight 2s ease-out;
+    animation: moveRight 2s ease-out;
+}
+
+#pie-image2 {
+    -webkit-animation: moveRight 1.5s ease-out;
+    -moz-animation: moveRight 1.5s ease-out;
+    -o-animation: moveRight 1.5s ease-out;
+    -ms-animation: moveRight 1.5s ease-out;
+    animation: moveRight 1.5s ease-out;
+}
+
+#pie-image3 {
+    -webkit-animation: moveRight 1s ease-out;
+    -moz-animation: moveRight 1s ease-out;
+    -o-animation: moveRight 1s ease-out;
+    -ms-animation: moveRight 1s ease-out;
+    animation: moveRight 1s ease-out;
+}
+
+@-webkit-keyframes moveRight {
+    0% {
+        -webkit-transform: translate3d(-500%, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes moveRight {
+    0% {
+        -moz-transform: translate3d(-500%, 0, 0);
+    }
+    100% {
+        -moz-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-o-keyframes moveRight {
+    0% {
+        -o-transform: translate3d(-500%, 0, 0);
+    }
+    100% {
+        -o-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-ms-keyframes moveRight {
+    0% {
+        -ms-transform: translate3d(-500%, 0, 0);
+    }
+    100% {
+        -ms-transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translate3d(-500%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}

@@ -1,0 +1,19 @@
+div.signinPage
+  div.bg
+    div.container
+      div#logo
+        h1#logoHead My
+        p#logoText Achievements
+      div.row
+        div.col-md-4.col-md-offset-4
+          form.form.signinForm
+            div.form-group.col-md-12
+              label 用户名:
+              input(type="text", class="form-control", ng-model='user.username', placeholder="请输入您的用户名")
+              div.text-danger {{error.usernameError}}
+            div.form-group.col-md-12
+              label 密码:
+              input(type="password", class="form-control", ng-model='user.password', placeholder="请输入您的密码")
+              div.text-danger {{error.passwordError}}
+            div.form-group.col-md-4.col-md-offset-4
+              button(class='btn btn-success', ng-click="signin()") 登陆

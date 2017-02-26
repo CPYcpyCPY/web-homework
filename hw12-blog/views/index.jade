@@ -1,0 +1,21 @@
+doctype html
+html(ng-app="blogApp", lang="zh-CN")
+  head
+    meta(charset="utf-8")
+    meta(name="author", content="hongchh_sysu@qq.com")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular.min.js")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular-route.min.js")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular-animate.min.js")
+    script(type="text/javascript", src="./javascripts/lib/ng-table/ng-table.min.js")
+    script(type="text/javascript", src="./javascripts/app.js")
+    script(type="text/javascript", src="./javascripts/controllers/userController.js")
+    script(type="text/javascript", src="./javascripts/controllers/blogController.js")
+    script(type="text/javascript", src="./javascripts/controllers/adminController.js")
+    link(rel="stylesheet", type="text/css", href="./javascripts/lib/ng-table/ng-table.min.css")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/animation.css")
+    title {{title}}
+  body
+    div(class="animate-container")
+      div(ng-view, class="view-animate")

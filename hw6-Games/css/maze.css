@@ -1,0 +1,128 @@
+h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#rules, #info {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+}
+
+#info {
+    color: #FA9B4B;
+    width: 500px;
+    margin: 15px auto;
+    border: 15px;
+    border-image: url(../img/wall.png);
+}
+
+#discript {
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#good-luck {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#maze-container {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    background-color: black;
+}
+
+.wall {
+    background: url(../img/wall.png);
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.break-wall {
+    background: url(../img/wall_break.png);
+}
+
+#up-left {
+    height: 200px;
+    width: 150px;
+    top: 0;
+    left: 0;
+}
+
+#up-mid {
+    height: 50px;
+    width: 200px;
+    top: 0;
+    left: 150px;
+}
+
+#up-right {
+    height: 200px;
+    width: 150px;
+    top: 0;
+    right: 0;
+}
+
+#bot-left {
+    height: 50px;
+    width: 200px;
+    bottom: 0;
+    left: 0;
+}
+
+#bot-mid {
+    height: 200px;
+    width: 100px;
+    bottom: 0;
+    left: 200px;
+}
+
+#bot-right {
+    height: 50px;
+    width: 200px;
+    bottom: 0;
+    right: 0;
+}
+
+#example {
+    height: 25px;
+    width: 100px;
+    margin: 0 auto;
+    background: url(../img/wall.png);
+}
+
+#start, #end {
+    position: absolute;
+    top: 204px;
+    height: 40px;
+    width: 40px;
+    background: url(../img/en_ex.png);
+    background-size: cover;
+}
+
+#start {
+    left: 0;
+}
+
+#end {
+    right: 0;
+}
+
+#check-cheat {
+    width: 10px;
+    height: 50px;
+    position: absolute;
+    right: -10px;
+    top: 200px;
+}

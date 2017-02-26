@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Detail
+    meta(charset="utf-8")
+    meta(name="author", content="hongchh_sysu@qq.com")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/detail.css")
+  body
+    div#website-info
+      h1 Student Information System
+      p Detailed information of student <span>#{user.username}</span>.
+      p#hint #{message}
+    div#student-info
+      h2 Information Card: <a href="/signout"> (sign out) </a>
+      ul
+        li * Name: #{user.username}
+        li * ID: #{user.id}
+        li * Phone: #{user.phone}
+        li * Email: #{user.email}

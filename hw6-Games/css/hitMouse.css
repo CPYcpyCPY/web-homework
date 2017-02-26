@@ -1,0 +1,118 @@
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#container {
+    width: 800px;
+    height: 650px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#instruction {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: -250px;
+    position: absolute;
+    font-weight: bold;
+    color: #1D980F;
+    margin: 150px 0 0 50px;
+}
+
+#controler {
+    width: 210px;
+    height: 40px;
+    margin: 10px auto;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    margin-left: -105px;
+}
+
+#start, #stop {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20%;
+    background-color: rgba(50, 215, 20, 0.3);
+    outline: none;
+}
+
+#start:active, #stop:active {
+    background-color: rgba(50, 215, 20, 0.6);
+}
+
+#info {
+    width: 150px;
+    height: 100px;
+    position: absolute;
+    bottom: 150px;
+    left: -100px;
+    padding: 0;
+    clear: left;
+    color: #D4146B;
+}
+
+#time, #score {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#time-info, #score-info {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: rgba(140, 185, 45, 0.3);
+    border: 1px solid black;
+}
+
+#game-info {
+    border: 1px solid black;
+    border-radius: 10%;
+    background-color: rgba(140, 185, 45, 0.3);
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#game-body {
+    width: 550px;
+    height: 350px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -175px;
+    margin-left: -275px;
+}
+
+.hole {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.mouse {
+    background-image: url(../img/mole.gif);
+    background-size: cover;
+}

@@ -1,0 +1,54 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+      div.navbar-header
+        p.navbar-brand My Achievements
+      div.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a {{user.username}}
+          li
+            a 第{{user.groups}}组
+          li
+            a {{user.name}}
+          li
+            a(href="/#/signout") 退出
+div.container
+  div.row
+    div.col-md-6.myScoreRecord.well.well-sm
+    div.col-md-6.myRankRecord.well.well-sm
+  div.row
+    div(class="col-md-3", ng-repeat="homework in allHomework")
+      div(class="panel", ng-class="panelBehave[homework.status]")
+        div.panel-heading
+          span {{homework.name}}
+          span(class="label pull-right", ng-class="labelBehave[homework.status]") {{hwStatus[homework.status]}}
+        div.panel-body
+          img(ng-if="!!allSubmission[homework._id] && !!allSubmission[homework._id].img", ng-src="/uploads/{{allSubmission[homework._id].img[0].filename}}")
+          p 开始时间: {{homework.beginTime}}
+          p 结束时间: {{homework.endTime}}
+        div.panel-footer
+          a(href="http://{{homework.link}}", target="_blank") 作业链接 
+          a(ng-if="homework.status == '1'", ng-click="showForm(homework._id)", data-toggle="modal", data-target="#myModal") 提交
+          a(class="pull-right", href="/#/remark/{{homework._id}}") 评审
+          a(ng-if="!!allSubmission[homework._id] && !!allSubmission[homework._id].src", class="pull-right", href="/uploads/{{allSubmission[homework._id].src[0].filename}}", target="_blank") 源文件&nbsp;
+//-Model
+div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+  div(class="modal-dialog", role="document")
+    div(class="modal-content")
+      div(class="modal-header")
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+        h4(class="modal-title" id="gridSystemModalLabel") 提交作业
+      div(class="modal-body")
+        div(class="container-fluid")
+          form(class="form")
+            label github链接
+            input(type="text", ng-model="submission.github", class="form-control")
+            label 留言:
+            textarea(ng-model="submission.message", rows="3", class="form-control")
+            label 源文件
+            input(id="srcFile", type="file", nv-file-select, uploader="uploader")
+            label 缩略图
+            input(id="imgFile", type="file", nv-file-select, uploader="uploader")
+            button(class="btn btn-default", ng-click="submit()") 提交

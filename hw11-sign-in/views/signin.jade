@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Sign In
+    meta(charset="utf-8")
+    meta(name="author", content="hongchh_sysu@qq.com")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/signin.css")
+    script(type="text/javascript", src="./javascripts/signin.js")
+  body
+    div#website-info
+      h1 Student information system
+      p Sign in to check your detail information. If you don't have an account,
+        | just <a href="/regist">Sign Up.</a>
+    div#sign-in
+      form(action="/signin", method="post")
+        input(type="text", name="username", placeholder="User name", value=user.username)
+        div.error=error.usernameError
+        input(type="password", name="password", placeholder="Password", value=user.password)
+        div.error=error.passwordError
+        input(type="button", value="reset")
+        input(type="submit", value="sign in")

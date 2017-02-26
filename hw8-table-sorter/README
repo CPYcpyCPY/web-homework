@@ -1,0 +1,89 @@
+* 题目一：拼图游戏JS代码优化
+* 优化前后代码对比：
+        优化前代码量：158行(不包括多余的空行和注释)
+        优化后代码量：96行(不包括多余的空行和注释)
+        优化后每个函数方法均已减至10行以内(不包括多余的空行和注释)
+
+* toolkits使用心得体会：
+        jQuery和lodash用起来都比原生的JS方便很多，在拼图游戏的优化中，
+        JQuery的优势体现得比较明显，简化了大部分获取元素的工作，同时
+        链式调用的特性也提供了很多便利。查找元素和添加属性等操作也是
+        极为灵巧。lodash则可以简化很多循环，获取随机数等基础操作的写法，
+        方便快速正确地写出代码。
+
+* 题目二：table sorter
+* 代码量：34行(不包括多余的空行和注释)
+          每个方法已简化到10行以内
+
+* 可排序网站：
+* http://acm.swust.edu.cn/contest/list/
+* http://tool.oschina.net/commons
+* http://www.kuaidaili.com/
+* http://acm.hust.edu.cn/problem/list
+
+* 一行神秘代码：
+$.fn.getTableElement=function(whichTable,rows,cols){$(whichTable).find("td").each(function(i){rows[parseInt(i/cols)].push(this.textContent);});return this;};$.fn.sortAndRefresh=function(whichTable,rows,cols,col,isAscend){rows.sort(function(a,b){return (isAscend?(a[col]<b[col]?1:-1):(a[col]>b[col]?1:-1));});$(whichTable).find("td").each(function(j){this.textContent=rows[parseInt(j/cols)][parseInt(j%cols)];});};$.fn.changeOrder=function(that,whichTable,rows,cols){if(that.className=="ascend"){that.className="descend";$.fn.sortAndRefresh(whichTable,rows,cols,that.cellIndex,false);}else{$(whichTable).find("th").removeClass();that.className="ascend";$.fn.sortAndRefresh(whichTable,rows,cols,that.cellIndex,true);}};$.fn.tableSorter=function(whichTable,rows,cols){$(whichTable).find("th").click(function(){$.fn.changeOrder(this,whichTable,rows,cols);});};var tableContent=[],whichTable=".table",col=$(whichTable).find("th").length,row=$(whichTable).find("tr").length-1;for(var i=0;i<row;++i){tableContent.push([]);};$.fn.getTableElement(whichTable,tableContent,col).tableSorter(whichTable,tableContent,col);
+
+*备注：
+    这行神秘代码有点长。。。
+    这行神秘代码其实是下面代码的压缩，已尽力压到34行，感觉已经很难再减了。除非用以下的方法。
+    一行写表格排序的一种方法，直接用jQuery拓展工具的tablesorter，先在控制台引入jquery.tablesorter.
+    js，然后输入这句代码，$("table").tablesorter()，便可实现表格排序。不过此法对于非标准写法的表格
+    并不起作用(很多能找到的有表格网站表头都写在tbody里面，不是标准的thead，有的甚至表头没用th而是用td)
+    ，于是还是手动写了下面的34行代码。查看代码请复制粘贴到JS文件中查看，有语法高亮可能方便看一些 ^_^
+
+
+/*
+ * 获取表格的内容存到数组rows中，参数cols为表格的列数
+ */
+$.fn.getTableElement = function(whichTable, rows, cols) {
+    $(whichTable).find("td").each(function(i) {
+        rows[parseInt(i/cols)].push(this.textContent);
+    });
+    return this;
+};
+/*
+ * 对数组rows中存的表格每一行的内容根据要排序的列col进行排序
+ * 排序之后更新表格内容
+ * 参数cols为表格总列数，col为要排序的列，isAsend判断增降序
+ */
+$.fn.sortAndRefresh = function(whichTable, rows, cols, col, isAscend) {
+    rows.sort(function(a, b) {
+        return isAscend ? (a[col] < b[col] ? 1 : -1):(a[col] > b[col] ? 1 : -1);
+    });
+    $(whichTable).find("td").each(function(j) {
+        this.textContent = rows[parseInt(j/cols)][parseInt(j%cols)];
+    });
+};
+/*
+ * 根据点击排序之后应该按哪种顺序排序对表格内容进行排序
+ */
+$.fn.changeOrder = function(that, whichTable, rows, cols) {
+    if (that.className == "ascend") {
+        that.className = "descend";
+        $.fn.sortAndRefresh(whichTable, rows, cols, that.cellIndex, false);
+    } else {
+        $(whichTable).find("th").removeClass();
+        that.className = "ascend";
+        $.fn.sortAndRefresh(whichTable, rows, cols, that.cellIndex, true);
+    }
+};
+/*
+ * 给表头每一栏都添加点击排序时间
+ */
+$.fn.tableSorter = function(whichTable, rows, cols) {
+    $(whichTable).find("th").click(function() {
+        $.fn.changeOrder(this, whichTable, rows, cols);
+    });
+};
+/*
+ * tableContent为存数表格信息的数组，whichTable为要排序的表格
+ * 不同网页表格的类名或id可能不同，只需对whicTable的值做修改即可
+ * col和row初始化时获取网页表格的列数和行数
+ * 基本信息获取完毕便可进行表格排序
+ */
+var tableContent = [], whichTable = ".table",
+    col = $(whichTable).find("th").length,
+    row = $(whichTable).find("tr").length - 1;
+for (var i = 0; i < row; ++i) {tableContent.push([]);};
+$.fn.getTableElement(whichTable, tableContent, col).tableSorter(whichTable, tableContent, col);

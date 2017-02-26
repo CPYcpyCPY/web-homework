@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+#website-info {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    left: 10%;
+    top: 25%;
+    color: white;
+}
+
+#website-info h1 {
+    font-size: 35px;
+}
+
+#website-info p {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+span {
+    font-weight: bolder;
+}
+
+#student-info {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    color: white;
+}
+
+ul {
+    width: 100%;
+    height: 70%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    list-style: none;
+    margin: 15px auto;
+}
+
+li {
+    display: block;
+    width: 100%;
+    height: 15%;
+    line-height: 10%;
+    font-size: 25px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    li {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    li {
+        font-size: 15px;
+        font-weight: bold;
+    }
+}

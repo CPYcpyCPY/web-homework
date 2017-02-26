@@ -1,0 +1,34 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+        div.navbar-header
+          p.navbar-brand <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Easy Blog
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href="/#/signin") <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登陆
+div.container
+  div.row
+    div.col-md-4.col-md-offset-4
+      form.form
+        div.form-group
+          input(type="text", class="form-control", placeholder="用户名", ng-model='user.username')
+          div.text-warning.bg-warning {{error.nameError}}
+        div.form-group
+          input(type="password", class="form-control", placeholder="密码", ng-model='user.password')
+          div.text-warning.bg-warning {{error.passwordError}}
+        div.form-group
+          input(type="password", class="form-control", placeholder="密码确认", ng-model='passwordAgain')
+          div.text-warning.bg-warning {{error.passwordError2}}
+        div.form-group
+          input(type="text", class="form-control", placeholder="学号", ng-model='user.id')
+          div.text-warning.bg-warning {{error.idError}}
+        div.form-group
+          input(type="text", class="form-control", placeholder="电话", ng-model='user.phone')
+          div.text-warning.bg-warning {{error.phoneError}}
+        div.form-group
+          input(type="text", class="form-control", placeholder="邮箱", ng-model='user.email')
+          div.text-warning.bg-warning {{error.emailError}}
+        div.form-group
+          button(class='btn btn-default', ng-click="clear()") 重置
+          button(class='btn btn-default', ng-click="signup()") 注册

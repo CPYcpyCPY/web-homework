@@ -1,0 +1,62 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+      div.navbar-header
+        p.navbar-brand My Achievements
+      div.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a {{user.username}}
+          li
+            a 负责小组: {{user.groups}}
+          li
+            a {{user.name}}
+          li
+            a(href="/#/signout") 退出
+div.container
+  div.row
+    div.col-md-3
+      h3 作业列表 <small class="text-muted">点击开始评审</small>
+      ul.list-unstyled
+        li(ng-repeat='hw in allHomework')
+          div.row
+            button(class="btn btn-default col-sm-10", ng-click='checkHomework(hw._id)') {{hw.name}}
+    div.col-md-9
+      table.table.table-hover
+        thead
+          tr
+            td 学生姓名
+            td 学号
+            td 学生留言
+            td #
+            td #
+            td #
+            td 分数
+        tbody
+          tr(ng-repeat="subm in allSubmission")
+            td {{subm.userInfo.name}}
+            td {{subm.userInfo.username}}
+            td {{subm.message}}
+            td
+              a(ng-if="subm.github.length > 0", href="http://{{subm.github}}", class="btn btn-primary",target="_blank") github链接
+            td
+              a(href="/uploads/{{subm.src[0].filename}}", class="btn btn-primary", target="_blank") 源文件
+            td
+              button(class="btn btn-primary", ng-click="remarkInfo.submissionId = subm._id", data-toggle="modal", data-target="#myModal") 评分/重评
+            td {{subm.remark.score}}
+//-Model
+div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+  div(class="modal-dialog", role="document")
+    div(class="modal-content")
+      div(class="modal-header")
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+        h4(class="modal-title" id="gridSystemModalLabel") 评分
+      div(class="modal-body")
+        div(class="container-fluid")
+          form(class="form")
+            label 分数:
+            input(type="text", ng-model="remarkInfo.score", class="form-control")
+            label 作业评价:
+            textarea(ng-model="remarkInfo.message", rows="3", class="form-control")
+            button(class="btn btn-default", ng-click="remark()") 提交

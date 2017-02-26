@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#calculator {
+    width: 600px;
+    height: 600px;
+    margin: 20px auto;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    background: url(img/bg.jpg);
+}
+
+#title {
+    margin: 0;
+    text-align: center;
+    height: 75px;
+    line-height: 75px;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+}
+
+#main_body {
+    margin: 10px auto;
+    width: 580px;
+    height: 505px;
+}
+
+#screen {
+    margin: 10px auto;
+    padding: 0 5px 0 0;
+    width: 560px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: right;
+    overflow: hidden;
+    color: white;
+    background-color: rgba(115, 225, 215, 0.1);
+}
+
+#keyboard {
+    margin: 10px auto;
+    width: 560px;
+    height: 420px;
+    position: relative;
+}
+
+#screen, #keyboard {
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.key {
+    display: block;
+    width: 125px;
+    height: 72px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    line-height: 72px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    border-radius: 15%;
+    outline: none;
+    color: white;
+}
+
+.num {
+    background-color: rgba(255, 225, 255, 0);
+}
+
+.num:active {
+    background-color: rgba(255, 225, 255, 0.2);
+}
+
+.op {
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+.op:active {
+    background-color: rgba(200, 200, 200, 0.4);
+}
+
+.del {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.del:active {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.row-1 {
+    top: 10px;
+}
+
+.row-2 {
+    top: 92px;
+}
+
+.row-3 {
+    top: 174px;
+}
+
+.row-4 {
+    top: 256px;
+}
+
+.row-5 {
+    top: 338px;
+}
+
+.col-1 {
+    left: 10px;
+}
+
+.col-2 {
+    left: 145px;
+}
+
+.col-3 {
+    left: 280px;
+}
+
+.col-4 {
+    left: 415px;
+}

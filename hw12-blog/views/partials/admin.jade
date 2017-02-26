@@ -1,0 +1,35 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+        div.navbar-header
+          a(class="navbar-brand" href="/#/detail") <span class="glyphicon glyphicon-user" aria-hidden="true"></span> ~Admin
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href="/#/home") <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页
+            li
+              a(href="/#/signout") <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
+          form(class="navbar-form navbar-right", role="search")
+            div.form-group
+              input(type="text", class="form-control", placeholder="搜索用户", ng-model='searchUser')
+div.container
+  div.row
+    div.col-md-3
+      h3 网站用户列表: <small class="text-info">{{allUser.length}}位用户</small>
+      ul.list-unstyled
+        li(ng-repeat='u in allUser | filter: searchUser')
+          div.row
+            button(class="btn btn-default col-sm-10", ng-click='watch(u)') <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{u}}
+    div.col-md-6
+      h1 {{onesblog.username}}
+      div(ng-repeat='b in onesblog.blogs track by $index')
+        h3 <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> {{b.blog.title}}
+        pre
+          p {{b.blog.text}}
+        button(ng-if='!b.hide', class="btn btn-default", ng-click='hideBlog(b._id, $index)') <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 隐藏
+        button(class="btn btn-default", ng-click='seeComment(b._id)') <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 查看评论
+    div.col-md-3
+      dl(ng-repeat='c in comments track by $index')
+        dt <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{c.comment.whoComment}}:
+        dd {{c.comment.commentText}}
+        button(ng-if='!c.comment.hide', class="btn btn-default", ng-click='hideComment(c._id, $index)') <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 隐藏

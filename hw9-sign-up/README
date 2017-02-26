@@ -1,0 +1,6 @@
+* 本次作业实现了一个注册系统，仅提供注册功能
+* 注册完成之后自动跳转至详情页面
+* 由于没有数据库，数据存储在data/student.json中
+* 运行server.js启动服务器
+example:
+node server.js

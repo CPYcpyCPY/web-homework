@@ -1,0 +1,23 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+        div.navbar-header
+          a(class="navbar-brand" href="/#/detail")<span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{username}}
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href="/#/home")<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页
+            li
+              a(href="/#/signout")<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
+div.container
+  div.row
+    div.col-sm-8.col-sm-offset-2
+      form
+        div.form-group
+          label <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 标题:
+          input(type='text', class="form-control", ng-model='blog.title')
+        div.form-group
+          label <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 正文:
+          textarea(class="form-control", rows="15", ng-model='blog.text')
+        div.form-group
+          button(class="btn btn-default", ng-click='change()') 修改

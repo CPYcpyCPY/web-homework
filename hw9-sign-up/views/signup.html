@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="author" content="hongchh_sysu@qq.com">
+    <link rel="stylesheet" type="text/css" href="/public/css/signup.css">
+</head>
+<body>
+    <div id="header">
+    </div>
+    <div id="website-info">
+        <h1>Student information system</h1>
+        <p>
+            For signing up, you should commit the following message:<br />
+            <span>* User name</span> (6 to 18 letters, numbers or underscore, begin with an letter)<br />
+            <span>* Student ID</span> (8 numbers, can not start with 0)<br />
+            <span>* Phone number</span> (11 numbers can not begin with 0)<br />
+            <span>* Email</span> (All the valid email)
+        </p>
+    </div>
+    <div id="sign-up">
+        <form action="http://localhost:8000/" method="post">
+            <input type="text" name="username" placeholder="User name" />
+            <div class="error">nameError</div>
+            <input type="text" name="id" placeholder="Student ID" />
+            <div class="error">idError</div>
+            <input type="text" name="phone" placeholder="Your phone number" />
+            <div class="error">phoneError</div>
+            <input type="text" name="email" placeholder="Your email" />
+            <div class="error">emailError</div>
+            <input type="reset" value="reset" />
+            <input type="submit" value="sign up" />
+        </form>
+    </div>
+    <script type="text/javascript" src="/public/js/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* 登陆页 */
+.signinPage, .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: 100% 100%;
+}
+.signinPage { background-image: url(../image/bg.png); }
+.bg { background-image: url(../image/line.png); }
+
+.signinForm, #logo {
+    margin-top: 100px;
+    color: white;
+}
+
+#logoHead {
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+#logoText {
+    font-size: 20px;
+}
+
+/* 主页 */
+.navbar-inverse {
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+/* 学生互评页 */
+.panel-body {
+    position: relative;
+    height: 280px;
+}
+
+.panel-body p {
+    position: relative;
+    top: 100px;
+    left: 20px;
+}
+
+.panel-body img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}

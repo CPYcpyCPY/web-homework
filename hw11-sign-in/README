@@ -1,0 +1,7 @@
+请打开两个终端进入到文件主目录之后分别执行以下操作:
+1. 安装依赖
+npm install
+2. 启动数据库(请自行在根目录下创建data文件夹)
+mongod -dbpath ./data
+3. 启动服务器
+node server.js

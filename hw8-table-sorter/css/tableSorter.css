@@ -1,0 +1,42 @@
+#container {
+    margin: 30px auto;
+    width: 450px;
+    height: 450px;
+    box-shadow: 15px 15px 15px #C3C0C0;
+}
+
+h1, h2 {
+    font-weight: bolder;
+    font-family: Arial;
+}
+
+table {
+    font-family: Arial;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #BFBFBF;
+}
+
+th {
+    background-color: #031B7D;
+    color: white;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #DDDDDD;
+}
+
+#staff {
+    width:350px;
+}
+
+.ascend {
+    background: #A6AFFC url(../img/ascend.png) no-repeat right;
+}
+
+.descend {
+    background: #A6AFFC url(../img/descend.png) no-repeat right;
+}

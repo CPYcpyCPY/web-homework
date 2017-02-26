@@ -1,0 +1,38 @@
+nav.navbar.navbar-inverse
+  div.container-fluid
+    div.container
+        div.navbar-header
+          a(class="navbar-brand" href="/#/detail") <span class="glyphicon glyphicon-user" aria-hidden="true"> {{username}}
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href="/#/home") <span class="glyphicon glyphicon-home" aria-hidden="true"> 主页
+            li
+              a(href="/#/signout") <span class="glyphicon glyphicon-log-out" aria-hidden="true"> 退出
+div.container
+  div.row
+    div.col-sm-8.col-sm-offset-2
+      h2 <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> {{blog.blog.title}}
+      h5 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{blog.username}}:
+      pre
+        p {{blog.blog.text}}
+  div.row
+    div.col-sm-8.col-sm-offset-2.input-group.input-group-lg
+      input(class="form-control", placeholder="写点什么吧...", ng-model='commentText')
+      span.input-group-btn
+        button(class="btn btn-default", ng-click='comment()') <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 评论
+  div.row
+    div.col-sm-8.col-sm-offset-2
+      h3 用户评论:
+        div(ng-if='comments.length == 0', class='row')
+          h4.col-sm-6.col-sm-offset-3 还没有人评论哟,来坐前排吧 o(≧v≦)o~~
+        ul.list-unstyled
+          li(ng-repeat='c in comments track by $index')
+            h4
+              span(class="glyphicon glyphicon-user" aria-hidden="true")
+              {{c.comment.whoComment}}:
+              small {{c.comment.commentText}} 
+                span(ng-if='c.comment.hide === false && c.comment.whoComment === username', class='label label-default', ng-click="c.checked=!c.checked") 修改
+                span(ng-if='c.comment.hide === false && c.comment.whoComment === username', class='label label-danger', ng-click="deleteComment(c._id, $index)") 删除
+            input(class='form-control', ng-show='c.checked', ng-model='newComment.text')
+            button(class='btn btn-default', ng-show='c.checked', ng-click='changeComment(c._id, $index)') 修改

@@ -1,0 +1,25 @@
+doctype html
+html(ng-app="myAchievements", lang="zh-CN")
+  head
+    meta(charset="utf-8")
+    meta(name="author", content="hongchh_sysu@qq.com")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular.min.js")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular-route.min.js")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular-animate.min.js")
+    script(type="text/javascript", src="./javascripts/lib/angular/angular-file-upload.min.js")
+    script(type="text/javascript", src="./javascripts/app.js")
+    script(type="text/javascript", src="./javascripts/controllers/userController.js")
+    script(type="text/javascript", src="./javascripts/controllers/teacherController.js")
+    script(type="text/javascript", src="./javascripts/controllers/studentController.js")
+    script(type="text/javascript", src="./javascripts/controllers/taController.js")
+    script(type="text/javascript", src="./javascripts/lib/jquery.js")
+    script(type="text/javascript", src="./javascripts/lib/bootstrap.min.js")
+    script(type="text/javascript", src="./javascripts/lib/highcharts.js")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/animation.css")
+    link(rel="stylesheet", type="text/css", href="./stylesheets/style.css")
+    title My Achievements
+  body
+    div(class="animate-container")
+      div(ng-view, class="view-animate")
